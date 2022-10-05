@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react'
 
 //compontents
 import Start from './compontents/Start';
+import Realization from './compontents/Realization';
 
 //styles
 import './App.css'
@@ -9,6 +10,7 @@ import './App.css'
 function App() {
   const [mode, setMode] = useState("start");
   const [chosenThing, setChosenThing] = useState("");
+  const [isDone, setIsDone] = useState(false);
 
   useEffect(() => {
     if(chosenThing) {
@@ -16,12 +18,17 @@ function App() {
     }
   },[chosenThing])
 
-  
+  useEffect(() => {
+    if(isDone === true) {
+      setMode("done");
+    }
+  }, [isDone])
+
   return (
     <div>
       {mode==='start' && <Start setChosenThing={setChosenThing} />}
-
-
+      {mode==='realization' && <Realization thing={chosenThing} setIsDone={setIsDone} />}
+      
     </div>
 
   )
