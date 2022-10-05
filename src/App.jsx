@@ -3,6 +3,7 @@ import { useState, useEffect } from 'react'
 //compontents
 import Start from './compontents/Start';
 import Realization from './compontents/Realization';
+import Done from './compontents/Done';
 
 //styles
 import './App.css'
@@ -28,7 +29,7 @@ function App() {
     <div>
       {mode==='start' && <Start setChosenThing={setChosenThing} />}
       {mode==='realization' && <Realization thing={chosenThing} setIsDone={setIsDone} />}
-      
+      {mode==='done' && <Done setMode={setMode} setChosenThing={setChosenThing} setIsDone={setIsDone} />}
     </div>
 
   )
