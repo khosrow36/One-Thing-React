@@ -5,7 +5,9 @@ export default function Realization({ thing, setIsDone }) {
   return (
     <div>
       <h1>Your One Thing is:</h1>
-      <p>{thing}</p>
+      <div className="the-thing">
+        <p>{thing}</p>
+      </div>
       <button onClick={handleSubmit}>Done!</button>
     </div>
   );
