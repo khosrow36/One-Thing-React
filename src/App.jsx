@@ -1,12 +1,12 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect } from "react";
 
-//compontents
-import Start from './compontents/Start';
-import Realization from './compontents/Realization';
-import Done from './compontents/Done';
+//components
+import Start from "./components/Start";
+import Realization from "./components/Realization";
+import Done from "./components/Done";
 
 //styles
-import './App.css'
+import "./App.css";
 
 function App() {
   const [mode, setMode] = useState("start");
@@ -14,25 +14,32 @@ function App() {
   const [isDone, setIsDone] = useState(false);
 
   useEffect(() => {
-    if(chosenThing) {
+    if (chosenThing) {
       setMode("realization");
     }
-  },[chosenThing])
+  }, [chosenThing]);
 
   useEffect(() => {
-    if(isDone === true) {
+    if (isDone === true) {
       setMode("done");
     }
-  }, [isDone])
+  }, [isDone]);
 
   return (
     <div>
-      {mode==='start' && <Start setChosenThing={setChosenThing} />}
-      {mode==='realization' && <Realization thing={chosenThing} setIsDone={setIsDone} />}
-      {mode==='done' && <Done setMode={setMode} setChosenThing={setChosenThing} setIsDone={setIsDone} />}
+      {mode === "start" && <Start setChosenThing={setChosenThing} />}
+      {mode === "realization" && (
+        <Realization thing={chosenThing} setIsDone={setIsDone} />
+      )}
+      {mode === "done" && (
+        <Done
+          setMode={setMode}
+          setChosenThing={setChosenThing}
+          setIsDone={setIsDone}
+        />
+      )}
     </div>
-
-  )
+  );
 }
 
-export default App
+export default App;
